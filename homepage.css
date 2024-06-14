@@ -1,0 +1,8 @@
+.homepage {
+    border: 3px solid black;
+    padding: 100px;
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
+    background-color:  #D8F4EF;
+}

@@ -1,0 +1,13 @@
+.forget-box {
+    border: 3px solid black;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    background-color:  #D8F4EF;
+}
+.send-otp{
+    margin-top: 10px;
+    align-items: center;
+   
+}

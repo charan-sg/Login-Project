@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="StudentRegister" name = "registerform">
+    <head>
+        <title>Student Registration Form</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="StudentRegisterController.js"></script>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+        <script src="RegisterFormServices.js"></script>
+        <link rel="stylesheet" href="address_box.css">
+    </head>
+    <body ng-controller="registerController" style="background-color: #E5DDDB;">
+        <form ng-submit = "submitForm()">
+            <h1>STUDENT REGISTRATION FORM</h1>
+                 <label  style="background-color: #B2AEAD;">BASIC DETAILS</label>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="firstname" class="col-sm-4 col-form-label bold-label">FIRST NAME</label>
+                            <input type="text" required id="Fname" class="form-control" ng-model="firstname" placeholder="First Name">
+                            <p>{{firstname}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="middlename" class="col-sm-4 col-form-label bold-label">MIDDLE NAME</label>
+                            <input type="text" required  id="Mname" class="form-control" ng-model="middlename" placeholder="Middle Name">
+                            <p>{{middlename}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="lastname" class="col-sm-4 col-form-label bold-label">LAST NAME</label>
+                            <input type="text" required id="Lname" class="form-control" ng-model="lastname" placeholder="Last Name">
+                            <p>{{lastname}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="emailid" name= "emailid" class="col-sm-4 col-form-label bold-label">EMAIL ID</label>
+                            <input type="email" required id="emailid" class="form-control" ng-model="emailid" placeholder="abc@gmail.com">
+                            <p>{{emailid}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="phonenumber" class="col-sm-4 col-form-label bold-label">PHONE NUMBER</label>
+                            <input type="tel" required id="phonenumber" class="form-control" ng-model="phonenumber" placeholder="+91-9876543210" maxlength="10">
+                            <p>{{phonenumber}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="dob" class="col-sm-4 col-form-label bold-label">DATE OF BIRTH</label>
+                            <input type="date" required id="dob" class="form-control" ng-model="dob">
+                            <p>{{dob | date:'dd/MM/yyyy'}}</p>
+                        </div>                        
+                    </div>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="gender" class="col-sm-2 col-form-label bold-label">GENDER</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="male" ng-model="gender" value="Male">
+                                <label class="form-check-label" for="male">MALE</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="female" ng-model="gender" value="Female">
+                                <label class="form-check-label" for="female">FEMALE</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gender" id="transgender" ng-model="gender" value="Transgender">
+                                <label class="form-check-label" for="transgender">TRANSGENDER</label>
+                            </div>
+                            <div>
+                                Selected Gender: {{gender}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="admision_date" class="col-sm-4 col-form-label bold-label">ADMISSION YEAR</label>
+                            <input type="date" required id="dob" class="form-control" ng-model="admision_date" required>
+                            <p>{{admision_date | date:'dd/MM/yyyy'}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="bloodgroup" class="col-sm-4 col-form-label bold-label">BLOOD GROUP</label>
+                            <input type="text" id="bloodgroup" required class="form-control" ng-model="bloodgroup">
+                            <p>{{bloodgroup}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="branch" class="bold-label">SELECT BRANCH</label>
+                                <div class="col-sm-4">
+                                    <select name="branch" id="branch" ng-model="branch" required>
+                                        <option value="">SELECT</option>
+                                        <option value="Computer Science">Computer Science and Engineering</option>
+                                        <option value="Electronics and Communication">Electronics and Communication Engineering</option>
+                                        <option value="Civil">Civil Engineering</option>
+                                        <option value="Mechanical">Mechanical Engineering</option>
+                                        <option value="Informtion Science">Information Science and Engineering</option>
+                                    </select>
+                                    {{branch}}
+                                </div>
+                            </div>
+                    </div>
+                    <br>
+                    <label style="background-color: #B2AEAD;">RESIDENTIAL ADDRESS</label>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="addr1" class="col-sm-4 col-form-label bold-label">ADDRESS LINE 1</label>
+                            <input type="text" id="addr1" class="form-control" ng-model = "addr1" placeholder="Street Address" required>
+                            <p>{{addr1}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="addr2" class="col-sm-4 col-form-label bold-label">ADDRESS LINE 2</label>
+                            <input type="text" id="addr2" class="form-control" ng-model = "addr2" placeholder="Street Address Line 2" required>
+                            <p>{{addr2}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="city" class="col-sm-4 col-form-label bold-label">CITY</label>
+                            <input type="text" id="city" class="form-control"  ng-model = "city" required>
+                            <p>{{city}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group row g-3">
+                        <div class="col-sm-4">
+                            <label for="state" class="col-sm-4 col-form-label bold-label">STATE</label>
+                            <input type="text" id="state" class="form-control" ng-model = "state" required>
+                            <p>{{state}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="zipcode" class="col-sm-4 col-form-label bold-label">ZIPCODE</label>
+                            <input type="number" maxlength="6" id="zipcode" class="form-control" ng-model="zipcode" required>
+                            <p>{{zipcode}}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                        <button><a href="homepage.html">Cancel</a></button>
+                    </div>
+        </form>
+        </div>
+    </body>
+</html>

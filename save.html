@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="StudentRegister">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="StudentRegisterController.js"></script>
+</head>
+<body ng-controller="registerController">
+    <form ng-submit="submitForm()">
+        <label>First Name:</label><input type="text" ng-model="firstname"><br>
+        <label>Middle Name:</label><input type="text" ng-model="middlename"><br>
+        <label>Last Name:</label><input type="text" ng-model="lastname"><br>
+        <label>Email ID:</label><input type="text" ng-model="emailid"><br>
+        <label>Phone Number:</label><input type="text" ng-model="phonenumber"><br>
+        <label>Date of Birth:</label><input type="text" ng-model="dob"><br>
+        <label>Branch:</label><input type="text" ng-model="branch"><br>
+        <label>Admission Date:</label><input type="text" ng-model="admision_date"><br>
+        <label>Blood Group:</label><input type="text" ng-model="bloodgroup"><br>
+        <label>City:</label><input type="text" ng-model="city"><br>
+        <label>State:</label><input type="text" ng-model="state"><br>
+        <label>Address 1:</label><input type="text" ng-model="addr1"><br>
+        <label>Address 2:</label><input type="text" ng-model="addr2"><br>
+        <label>Zip Code:</label><input type="text" ng-model="zipcode"><br>
+        <label>Gender:</label><input type="text" ng-model="gender"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
