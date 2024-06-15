@@ -12,10 +12,22 @@ angular.module('Login',[])
     
     loginService.login(logincredentials)
         .then(function(response){
-            // console.log(response.data)
+            // console.log(response)
+            msg = response.data
+            if(!msg["Login Successful"]){
+                $scope.loginmsg = "Invalid USER ID or PASSWORD";
+                $scope.userid = '';
+                $scope.password = '';
+            }
+            else{
+                alert("Login Succesfull")
+                $scope.loginmsg = '';
+            }
         })
-    
+    }
 
+    $scope.Cancel = function(){
+        console.log("Cancelled")
     }
 
 }

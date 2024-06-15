@@ -34,6 +34,11 @@
                         <input type="password" id="password" class="form-control"  ng-model="password" required autocomplete="current-password">
                     </div>
                 </div>
+                <div ng-if="loginmsg">
+                    <div class="alert alert-danger" role="alert">
+                       <p>{{loginmsg}}</p>
+                      </div>
+                </div>
                 <p><a href="forgetpassword.html">Forget Password?</a></p>
                 <div>
                     <button type="submit" class="btn btn-primary buttons">Submit</button>
