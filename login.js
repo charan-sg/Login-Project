@@ -1,5 +1,6 @@
 angular.module('Login',[])
-.controller('loginController',  ['$scope','loginService', function($scope, loginService){
+.controller('loginController',  ['$scope','$window', 'loginService',function($scope, $window,  loginService){
+    
     $scope.userid = '';
     $scope.password = '';
 
@@ -12,16 +13,15 @@ angular.module('Login',[])
     
     loginService.login(logincredentials)
         .then(function(response){
-            // console.log(response)
             msg = response.data
-            if(!msg["Login Successful"]){
-                $scope.loginmsg = "Invalid USER ID or PASSWORD";
-                $scope.userid = '';
-                $scope.password = '';
+            if(msg["Login Successful"]){
+                alert("Login Succesfull")
+                $window.location.href = 'homepage.html'
             }
             else{
-                alert("Login Succesfull")
-                $scope.loginmsg = '';
+                $scope.loginmsg = "Invalid USER ID or PASSWORD";
+                $scope.userid = '';
+                $scope.password = '';   
             }
         })
     }
