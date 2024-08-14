@@ -4,6 +4,7 @@ from sqlalchemy import create_engine                #one of the module in sqlalc
 from sqlalchemy.orm import sessionmaker
 from studentRegistermodel import Base, Student
 from datetime import datetime
+import random
 
 
 # create a instance of class object
@@ -25,6 +26,7 @@ def submitForm():
     Storing the Details in the database
 
     """
+    register_number = random.randint(10000, 99999)
     form_data = request.json
     firstname = form_data.get('firstname')
     middlename = form_data.get('middlename')
@@ -55,7 +57,9 @@ def submitForm():
     session = Session()
 
     # create a new Student instance with the form data
-    student = Student(
+    try:
+        student = Student(
+        register_number=register_number,
         firstname=firstname,
         middlename=middlename,
         lastname=lastname,
@@ -74,16 +78,19 @@ def submitForm():
     )
 
     # Add the student to the session
-    session.add(student)
+        session.add(student)
 
     # commit the transaction to save the data to the database
-    session.commit()
+        session.commit()
+        response = {"message": "Registration Successful", "Register Number is": register_number}
 
-    # close the session
-    session.close()
-    print("Received form data:", form_data)
+    except Exception as e:
+        session.rollback()
+        response = {"message": f"Registration Failed: {str(e)}"}
+    finally:
+        session.close()
 
-    return jsonify({"status": "success", "data": form_data})
+    return jsonify({"status": "success", "response": response})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="SearchStudent">
+<head>
+    <title>Search Student</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="search.js"></script>
+    <script src="searchservices.js"></script>
+    <link rel="stylesheet" href="search.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color:#D8F4EF;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body ng-controller="searchController">
+    <div class="container">
+        <h2 class="text-center">SEARCH STUDENT RECORD</h2>
+        <form ng-submit="Search()">
+            <div class="form-row align-items-center">
+                <div class="col-md-6 mb-3">
+                    <label for="searchelement" class="bold-label">SEARCH BY</label>
+                    <select class="form-control" name="searchelement" id="searchelement" ng-model="searchelement" required>
+                        <option value="">SELECT</option>
+                        <option value="register_number">Register Number</option>
+                        <option value="firstname">First Name</option>
+                        <option value="phonenumber">Phone Number</option>
+                        <option value="emailid">Email ID</option>
+                        <option value="branch">Branch</option>
+                    </select>
+                    <!-- {{searchelement}} -->
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="searchvalue" class="bold-label d-none d-md-block">&nbsp;</label>
+                    <input class="form-control" type="search" placeholder="Search" ng-model="searchvalue" required>
+                    <!-- {{searchvalue}} -->
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-danger" type="button" onclick="window.location.href='homepage.html'">Cancel</button>
+                <button class="btn btn-outline-danger" type="button">Clear</button>
+            </div>
+        </form>
+
+        <div ng-if="student" class="table-responsive">
+            <table class="table table-success table-striped">
+                <tr>
+                    <th>Register Number</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Email Id</th>
+                    <th>Date of Birth</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
+                    <th>Branch</th>
+                    <th>Blood Group</th>
+                    <th>Address 1</th>
+                    <th>Address 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+                <tr>
+                    <td>{{student.register_number}}</td>
+                    <td>{{student.firstname}}</td>
+                    <td>{{student.middlename}}</td>
+                    <td>{{student.lastname}}</td>
+                    <td>{{student.emailid}}</td>
+                    <td>{{student.dob}}</td>
+                    <td>{{student.phonenumber}}</td>
+                    <td>{{student.gender}}</td>
+                    <td>{{student.branch}}</td>
+                    <td>{{student.bloodgroup}}</td>
+                    <td>{{student.addr1}}</td>
+                    <td>{{student.addr2}}</td>
+                    <td>{{student.city}}</td>
+                    <td>{{student.state}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

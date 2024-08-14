@@ -6,7 +6,7 @@ Base = declarative_base()
 class Student(Base):
     __tablename__ = 'students'
 
-    id = Column(Integer, primary_key=True)
+    register_number = Column(Integer, primary_key=True)
     firstname = Column(String)
     middlename = Column(String)
     lastname = Column(String)
